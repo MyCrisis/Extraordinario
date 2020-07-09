@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-size: cover;
+    background-attachment: fixed;
+}
+* {
+    box-sizing: border-box;
+}
+.contenedor{
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+}
+.formulario{
+    background: #2D3A3A;
+    margin-top: 150px;
+    padding: 3px;
+}
+h1{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    font-size: 20px;
+    width: 82%;
+    padding: 10px;
+    border: none;
+    align-items: center;
+}
+.input-contenedor{
+    margin-bottom: 15px;
+    border: 1px solid #2D3A3A;
+    align-content: center;
+}
+.icon{
+    min-width: 50px;
+    text-align: center;
+    color: #999;
+}
+.button{
+    border: none;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    background:  #0471A6;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button:hover{
+    padding-top: 2px;
+    background: cadetblue;
+}
+p{
+    text-align: center;
+    color: white;
+}
+.link{
+    text-decoration: none;
+      color: white;
+    font-weight: 600;
+}
+.link:hover{
+     color: #5C7AFF;
+}
+@media(min-width:768px)
+{
+    .formulario{
+        margin: auto;
+        width: 500px;
+        margin-top: 150px;
+        border-radius: 2%;
+    }
+}

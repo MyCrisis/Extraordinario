@@ -33,16 +33,18 @@
                     <ul>
                         <%if (sesionOk.getAttribute("usuario") == null) {%>
                         <li>
+                            <!--Aún sin programar-->
                             <a href="login.jsp">
                                 Iniciar sesión
                             </a>
+                            <!--Aquí termina la parte sin programar-->
                         </li>
-                        <li><a href="Registro.jsp">Registrarse</a></li>
+                        <li><a href="registrarse.jsp">Registrarse</a></li>
                         <!--AÚN NO PROGRAMADOS LOS JSP-->
                         <%} else if (sesionOk.getAttribute("usuario") != null && sesionOk.getAttribute("estado").equals(0)) {%>
                         <li><a href="Cliente.jsp">Menú Principal</a></li>
                             <%} else if (sesionOk.getAttribute("usuario") != null && sesionOk.getAttribute("estado").equals(1)) {%>
-                        <li><a href="Empleado.jsp">Menú Principal</a></li>
+                        <li><a href="Gerente.jsp">Menú Principal</a></li>
                             <%}%>
                         <!--TERMINA LA PARTE AÚN SIN PROGRAMAR-->
                     </ul>
@@ -62,14 +64,8 @@
                 </nav>
             </div>
         </section>
-
-
-
         <section id="cabecera">
             <div class="contenedor">
-
-                
-
             </div>
         </section>
 
