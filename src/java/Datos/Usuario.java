@@ -4,12 +4,11 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
-import Funcionalidades.Conexion;
+import Funcionalidades.Conectarse;
 import java.util.Vector;
 import javax.servlet.http.HttpSession;
 
-public class Usuario
-{
+public class Usuario{
     private String nombre;
     private String appat;
     private String apmat;
@@ -117,7 +116,7 @@ public class Usuario
         PreparedStatement pr = null;
         ResultSet rs = null;
         try {
-            cn = Conexion.getConexion();
+            cn = Conectarse.getConexion();
             String sql = "SELECT * FROM usuarios WHERE correo=? AND clave=?";
             pr = cn.prepareStatement(sql);
             pr.setString(1, user);
@@ -159,7 +158,7 @@ public class Usuario
         PreparedStatement pr = null;
         ResultSet rs = null;
         try {
-            cn = Conexion.getConexion();
+            cn = Conectarse.getConexion();
             String sql = "SELECT * FROM usuarios WHERE correo=?";
             pr = cn.prepareStatement(sql);
             pr.setString(1, user);
@@ -196,9 +195,7 @@ public class Usuario
         public static int Guardar(Usuario e) {
         int estatus = 0;
         try {
-
-            Connection con = Conexion.getConexion();
-
+            Connection con = Conectarse.getConexion();
             String q = "insert into usuarios (nombre, appat, apmat, telefono, calle, numero, cp, correo, clave, estado)"
                     + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -214,8 +211,6 @@ public class Usuario
             ps.setString(9, e.getContrasena());
             ps.setString(10, Integer.toString(e.getEstado()));
             
-
-
             estatus = ps.executeUpdate();
 
         } catch (Exception ed) {
@@ -231,7 +226,7 @@ public class Usuario
         int estatus = 0;
         try {
 
-            Connection con = Conexion.getConexion();
+            Connection con = Conectarse.getConexion();
             String q = "Delete from usuarios where id = ?";
             PreparedStatement ps = con.prepareStatement(q);
             ps.setString(1, Integer.toString(e.getId()));
@@ -256,7 +251,7 @@ public class Usuario
         PreparedStatement pr=null;
         ResultSet rs=null;
         try{
-            cn=Conexion.getConexion();
+            cn=Conectarse.getConexion();
             String sql="SELECT * FROM usuarios where estado='0'";
             pr=cn.prepareStatement(sql);
             rs=pr.executeQuery();
@@ -290,14 +285,13 @@ public class Usuario
         return lp;
     }
     
-    
         public Vector<Usuario> listaDatos(int id){
         Vector<Usuario> lp=new Vector<Usuario>();
         Connection cn=null;
         PreparedStatement pr=null;
         ResultSet rs=null;
         try{
-            cn=Conexion.getConexion();
+            cn=Conectarse.getConexion();
             String sql="SELECT * FROM usuarios where id=?";
             pr=cn.prepareStatement(sql);
             pr.setInt(1, id);

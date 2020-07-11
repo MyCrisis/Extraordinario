@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServlet;
 
-public class VerificarRegistro extends HttpServlet
-{
+public class VerificarRegistro extends HttpServlet{
     protected void processRequest(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
     }
         
@@ -84,7 +83,6 @@ public class VerificarRegistro extends HttpServlet
         }
 
     }
-    
     public String getServletInfo() {
         return "Short description";
     }

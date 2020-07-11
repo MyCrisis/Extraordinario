@@ -32,37 +32,37 @@ if (sesionOk.getAttribute("usuario") != null) {
     <script src="JavaScript/validar_usuario.js"></script>
 </head> 
 <body>
-    <body background="imagenes/index_fondo.jpg">
+    <body background="imagenes/fondo_principal.jpg">
     <form method="POST" action="VerificarRegistro" class="formulario" onsubmit="return validar();">
         <h1>
-            Login
+            Registro
         </h1>
         <div class="contenedor">
-            <div class="input-contenedor">
+            <div class="texto">
                 <input type="text" id ="nombre" name="textoNombre" placeholder="&#128100;Nombre(s)" required autofocus maxlength="30" onkeypress="return validars(event)" autocomplete="off" pattern="[A-Za-z\s]{3,30}">
             </div>
-            <div class="input-contenedor"> 
+            <div class="texto"> 
                 <input type="text" id ="apellido1" name="textoApPat" pattern="[A-Za-z\s]{3,30}" placeholder="&#128100;Apellido Paterno" required autofocus maxlength="15"  onkeypress="return validars(event)" autocomplete="off">
             </div>
-            <div class="input-contenedor">
+            <div class="texto">
                 <input type="text"  id ="apellido2" name="textoApMat" pattern="[A-Za-z\s]{3,30}"  placeholder="&#128100;Apellido Materno" required autofocus maxlength="15"  onkeypress="return validars(event)" autocomplete="off">
             </div>
-            <div class="input-contenedor">
+            <div class="texto">
                 <input type="text" name="textoNumero"  placeholder="&#127968; Numero de domicilio" required autofocus maxlength="5" pattern="[0-9]{1,5}" onkeypress="return validarn(event)"  autocomplete="off">
             </div>
-            <div class="input-contenedor">
+            <div class="texto">
                 <input type="text" name="textoCalle"  placeholder="&#127968; Calle" required autofocus maxlength="30" pattern="[A-Za-z\s]{3,30}" onkeypress="return validars(event)"  autocomplete="off">
             </div>
-            <div class="input-contenedor">
+            <div class="texto">
                 <input type="text" name="textoCodigoPostal"  placeholder="&#127968; Codigo Postal" required autofocus maxlength="10"pattern="[0-9]{1,10}" onkeypress="return validarn(event)"  autocomplete="off">
             </div>
-            <div class="input-contenedor">
+            <div class="texto">
                 <input type="text"  id ="tel" name="textoTelefono" placeholder="&#128222; Telefono" required autofocus maxlength="15" onkeypress="return validarn(event)" autocomplete="off" pattern="^(\(\+?\d{2,3}\)[\*|\s|\-|\.]?(([\d][\*|\s|\-|\.]?){6})(([\d][\s|\-|\.]?){2})?|(\+?[\d][\s|\-|\.]?){8}(([\d][\s|\-|\.]?){2}(([\d][\s|\-|\.]?){2})?)?)$">
             </div>
-            <div class="input-contenedor">
+            <div class="texto">
                 <input type="email" id ="email" name="textoCorreo"  placeholder="&#64;Correo Electronico" required autofocus maxlength="76" autocomplete="off" onkeypress="return validara(event)">
             </div>
-            <div class="input-contenedor">
+            <div class="texto">
                 <input type="password" id ="contra" name="textoContraseña"  placeholder="&#128274;Contraseña" required autofocus maxlength="20" onkeypress="return validarz(event)">
             </div>
             <p align="left">
@@ -104,7 +104,7 @@ if (sesionOk.getAttribute("usuario") != null) {
             </p>
             <p>
                 ¿Ya tienes una cuenta?
-                <a class="link" href="login.jsp">
+                <a class="link" href="inicio_sesion.jsp">
                     Inicia Sesión
                 </a>
             </p>

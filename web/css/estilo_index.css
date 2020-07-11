@@ -64,7 +64,7 @@ header a:hover{
 /*cabecera con imagen*/
 #cabecera{
     min-height: 600px;
-    background: url('../imagenes/index_fondo.jpg') ;
+    background: url('../imagenes/fondo_principal.jpg') ;
     background-size: 100%;
     text-align:center;
     color: pink;

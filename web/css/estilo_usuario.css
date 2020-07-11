@@ -13,7 +13,7 @@ body {
     text-align: center;
 }
 .formulario{
-    background: #2D3A3A;
+    background: #F06292;
     margin-top: 150px;
     padding: 3px;
 }
@@ -31,9 +31,9 @@ input[type="password"]{
     border: none;
     align-items: center;
 }
-.input-contenedor{
+.texto{
     margin-bottom: 15px;
-    border: 1px solid #2D3A3A;
+    border: 1px solid #F06292;
     align-content: center;
 }
 .icon{
