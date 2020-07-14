@@ -1,7 +1,7 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
-<%@page import="Funcionalidades.*" %>
+<%@page import="Datos.*" %>
 
 <%@ page session="true" %>
 <%
@@ -20,16 +20,15 @@
         usuario = (String) sesionOk.getAttribute("usuario");
     }
 %>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            Gerente
-        </title>
-    </head>
-    <meta charset="utf-8">
-    <body oncopy="return false" onpaste="return false" ondrop="return false">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/estilo_gerente.css">
+        <title>Administración de las citas</title>
+    </head>
     <body>
         <header>
             <div class="contenedor">
@@ -66,10 +65,4 @@
                 </nav>
             </div>
         </header>
-        <center>
-            <h1>
-                Bienvenido de vuelta: <%=usuario%>
-            </h1>
-        </center>
-    </body>
-</html>
+        

@@ -1,3 +1,4 @@
+<%@page import="Datos.Usuario"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
@@ -23,7 +24,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cliente</title>
+        <title>Perfil del cliente</title>
     </head>
         <meta charset="utf-8">
         <body oncopy="return false" onpaste="return false" ondrop="return false">
@@ -65,10 +66,45 @@
             </nav>
         </div>
     </header>
-    <center>
-        <h1>
-            Bienvenido de vuelta: <%=usuario%>, en que le podemos ayudar?
-        </h1>
-    </center>
-</body>
+    <center><table>   
+     <%
+Vector<Usuario> vecPro=new Usuario().listaDatos((Integer)sesionOk.getAttribute("id"));
+for(Usuario pro:vecPro){
+          %>
+          
+          <tr>
+              <td><h1>Nombre:</h1></td>
+              <td><h1><%=pro.getNombre()%> <%=pro.getAppat()%> <%=pro.getApmat()%></h1></td>
+          </tr>
+          <tr>
+              <td><h1>Domicilio:</h1></td>
+              <td><h1><%=pro.getCalle()%> <%=pro.getNumero()%> <%=pro.getCp()%></h1></td>
+          </tr>
+          <tr>
+              <td><h1>Correo:</h1></td>
+              <td><h1><%=pro.getCorreo()%></h1></td>
+          </tr>
+          <tr>
+              <td><h1>Telefono:</h1></td>
+              <td><h1><%=pro.getTelefono()%></h1></td>
+          </tr>
+          <tr>
+              <td><h1>ID:</h1></td>
+              <td><h1><%=pro.getId()%></h1></td>
+          </tr>
+            
+          
+          <%}%>
+
+        </table></center> 
+    <br>
+    <br>
+    
+       <form action="MostrarHistorial">
+        <input name="usuario" type="hidden" value="<%=sesionOk.getAttribute("id")%>">
+              <input name="nombre" type="hidden" value="<%=sesionOk.getAttribute("name")%>">
+              <center><input type="submit" value="Historial de compras"> </center>
+          </form>    
+        
+    </body>
 </html>

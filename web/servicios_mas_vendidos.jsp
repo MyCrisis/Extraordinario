@@ -66,10 +66,3 @@
                 </nav>
             </div>
         </header>
-        <center>
-            <h1>
-                Bienvenido de vuelta: <%=usuario%>
-            </h1>
-        </center>
-    </body>
-</html>

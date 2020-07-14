@@ -2,8 +2,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="Operaciones.Conexion"%>
-<%@page import="Operaciones.Dventa"%>
+<%@page import="Funcionalidades.Conectarse"%>
+<%@page import="Funcionalidades.Compras"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
@@ -15,16 +15,15 @@
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     response.setDateHeader("Expires", -1);
     String usuario = "";
-    Dventa dv = new Dventa();
-    ArrayList Productos = dv.Productos;
-    ArrayList Cantidad = dv.Cantidad;
+    Compras dv = new Compras();
+    ArrayList Productos = dv.Servicios;
+    ArrayList Cantidad = dv.Disponible;
     Date fecha = new Date();
     HttpSession sesionOk = request.getSession();
     if (sesionOk.getAttribute("usuario") == null) {
 %>
 <jsp:forward page="login.jsp">
-    <jsp:param name="error" value="Es
-               obligatorio identificarse"/>
+    <jsp:param name="error" value="Tienes que identificarte de manera obligatoria"/>
 </jsp:forward>
 <%
     } else {
@@ -33,7 +32,7 @@
 %>
 <html>
     <head>
-        <title>Mi carrito</title>
+        <title>Servicios</title>
         <link rel="stylesheet" type="text/css" href="css/estilo_cliente.css">
     </head>
     <body>
@@ -81,11 +80,11 @@
 
             </tr>
             <%
-                Producto u = null;
+                Servicio u = null;
                 Connection cn = null;
                 PreparedStatement pr = null;
                 ResultSet rs = null;
-                cn = Conexion.getConexion();
+                cn = Conectarse.getConexion();
                 int total = 0;
                 int cantotal = 0;
               try {%>
@@ -98,18 +97,15 @@
                     int cantidad = (Integer) Cantidad.get(x);
                     if (rs.next()) {
 
-                        u = new Producto();
+                        u = new Servicio();
                         u.setNombre(rs.getString("nombre"));
                         u.setDescripcion(rs.getString("descripcion"));
-                        u.setGenero(rs.getString("genero"));
-                        u.setEstreno(rs.getInt("estreno"));
-                        u.setDirector(rs.getString("director"));
+                        u.setTiempo(rs.getString("tiempo"));
                         u.setPrecio(rs.getInt("precio"));
-                        u.setStock(rs.getInt("stock"));
+                        u.setDisponibilidad(("Disponibilidad"));
                         total = total + u.getPrecio() * cantidad;
                         cantotal = cantotal + cantidad;
                     }
-
             %>
             <tr>
                 <td><%=u.getNombre()%></td>
@@ -117,15 +113,7 @@
                 <td>$<%=u.getPrecio()%></td>
                 <td><%=Cantidad.get(x)%></td>
                 <td>$<%=u.getPrecio() * cantidad%></td>
-
-
-
-
-
-
-
                 <%}%>
-
             </tr>
             <tr>
                 <td></td>
@@ -163,7 +151,6 @@
     <br>
     <center>Fecha de realizacion de su compra:<%=fecha%></center>
 
-
     <br>
     <br>
     <center><form method="POST" action="FinalizarCompra">
@@ -172,8 +159,6 @@
             
             <input type="submit" value="Finalizar Compra">
             
-
-
         </form></center>
 
     <%} catch (Exception ed) {

@@ -15,7 +15,6 @@ if (sesionOk.getAttribute("usuario") == null) {
 </jsp:forward>
 <%
 } else {
-
 }
 %>
 <!DOCTYPE html>

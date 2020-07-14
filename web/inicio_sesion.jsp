@@ -8,10 +8,8 @@
     response.setHeader("Pragma", "No-cache");
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     response.setDateHeader("Expires", -1);
-
 HttpSession sesionOk = request.getSession();
 HttpSession sesionerror = request.getSession();
-
 if (sesionOk.getAttribute("usuario") != null && sesionOk.getAttribute("estado").equals(1)){
 %>
 <jsp:forward page="gerente.jsp">
@@ -36,10 +34,10 @@ if (sesionOk.getAttribute("usuario") != null && sesionOk.getAttribute("estado").
         Iniciar sesion
     </title> 
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/estilo_usuaro.css">
+    <link rel="stylesheet" type="text/css" href="css/estilo_usuario.css">
 </head>  
 <body>
-    <body background="IMG/fondo_principal.png">
+    <body background="imagenes/fondo_principal.jpg">
     <form class="formulario" method="POST" action="VerificarUsuario">
     <h1>
         Inicio de sesión

@@ -1,29 +1,115 @@
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+<%@page import="java.util.*" %>
+<%@page import="Datos.*" %>
+
+<%@ page session="true" %>
+<%
+    response.setHeader("Pragma", "No-cache");
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setDateHeader("Expires", -1);
+    String usuario = "";
+    HttpSession sesionOk = request.getSession();
+    if (sesionOk.getAttribute("usuario") == null) {
+%>
+<jsp:forward page="inicio_sesion.jsp">
+    <jsp:param name="error" value="Tienes que identificarte de manera obligatoria"/>
+</jsp:forward>
+<%
+    } else {
+        usuario = (String) sesionOk.getAttribute("usuario");
+    }
+%>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>
-        Metodos de pago
-    </title>
-    <link rel="stylesheet" type="text/css" href="css/estilo_metodos_pago.css">
-</head>
-<body>
-    <h1>
-        <font size="7" color="#525174" face="verdana">
-            Aceptamos pagos por medio de:
-        </font>
-    </h1>
-    <ul>
-        <img src="imagenes/american_express.png" width="260px"; height="150px">
-        <br>
-        <img src="imagenes/visa.png" width="250px"; height="150px">
-        <br>
-        <img src="imagenes/MasterCard.jpg" width="250px"; height="150px">
-    </ul>
-    <br>
-    <a href="index.jsp">
-        <font size="5">
-            REGRESAR
-        </font>
-    </a>
-</body>
-</html>
+    <head>
+        <script src="js/validar_usuario.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/estilo_ver.css">
+        <title>
+            Página de servicios
+        </title>
+    </head>
+    <body>
+        <header>
+            <div class="contenedor">
+                <div id="marca">
+                </div>
+                <nav>
+                    <ul>
+                        <li class="actual">
+                            <a href="cliente.jsp">
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="verServiciosCliente.jsp">
+                                Nuestro catálogo
+                            </a>
+                        </li>
+                        <li class="actual">
+                            <a href="servicios.jsp">
+                                Servicios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="perfil.jsp">
+                                Perfil
+                            </a>
+                        </li>
+                        <li>
+                            <form action="CerrarSesion">
+                                <input type="submit" value="cerrar sesion">
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <%
+            Vector<Servicio> vecPro = new Servicio().listaServicios();
+            Extraordinario extraordinario = new Extraordinario();
+        %>
+
+    <center>
+        <table class="tabla_usuarios" width="75%">
+            <tr bgcolor="pink" style="color: white">
+                <h4>
+                    <td>
+                        Nombre:
+                    </td>
+                    <td>
+                        Descripción:
+                    </td>
+                    <td>
+                        Tiempo estimado:
+                    </td>
+                    <td>
+                        precio
+                    </td>
+                    <td>
+                        horario
+                    </td>
+                </h4>
+            </tr>
+            <%if (vecPro.size() == 0) {
+            %>
+            <center>
+                <h1>
+                    No hay usuarios registrados
+                </h1>
+            </center>
+            <%} else {
+                for (Servicio pro : vecPro) {
+            %>
+            <script>
+                function pregunta<%=pro.getId()%>() {
+                    var form = document.getElementById("<%=pro.getId()%>");
+                    if (confirm('¿Estas seguro de Agregar el producto con id:<%=pro.getId()%> ?')) {
+                <%%>
+                        form.submit();
+                    }
+                }
+            </script>
+<!--Codigo incompleto-->

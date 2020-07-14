@@ -104,7 +104,6 @@
                 for (Servicio pro : vecPro) {
             %>
             <script>
-
                 function pregunta<%=pro.getId()%>() {
                     var form = document.getElementById("<%=pro.getId()%>");
                     if (confirm('¿Estas seguro de Agregar el producto con id:<%=pro.getId()%> ?')) {
@@ -113,4 +112,27 @@
                     }
                 }
             </script>
-<!--Codigo incompleto-->
+            <tr>
+                <td><%=pro.getNombre()%></td>
+                <td><%=pro.getDescripcion()%></td>
+                <td><%=pro.getTiempo()%></td>
+                <td><%=pro.getEstreno()%></td>
+                <td><%=pro.getDirector()%></td>
+                <td>$:<%=pro.getPrecio()%></td>
+                <td>Cantidad Disponible: <%=pro.getStock()%></td>   
+                <td><form method="POST" action="GestorCarrito" id="<%=pro.getId()%>">
+
+                        <input type="button" value="Comprar" onclick="pregunta<%=pro.getId()%>()">
+                        <input name="pelicula" type="hidden" value="<%=pro.getId()%>">
+                        <input name="precio" type="hidden" value="<%=pro.getPrecio()%>">
+                        <input name="cantidad" type="text" required autofocus onkeypress="return validarn(event)" maxlength="2">
+                    </form></td> 
+
+            </tr>
+            </tr>
+            <%}
+              }%>
+
+        </table></center>
+</body>
+</html>
